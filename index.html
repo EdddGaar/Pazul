@@ -3,116 +3,436 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Planilla Azul</title>
+    <title>Planilla Azul - SUTESUAEM</title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Fondo y partículas */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
         body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            background: #0f2027; /* fallback */
-            background: linear-gradient(to right, #2c5364, #203a43, #0f2027);
+            font-family: 'Inter', sans-serif;
             color: #fff;
-            overflow-x: hidden;
+            background-color: #0044BB; /* Changed to a brighter royal blue */
+            min-height: 100vh;
         }
 
-        /* Animaciones de entrada */
+        #particles-js {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .glassmorphism {
+            backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            border: 1px solid transparent;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .glassmorphism-card:hover {
+            transform: scale(1.05) rotate3d(1,1,0,4deg); /* New 3D hover effect */
+            box-shadow: 0 16px 64px 0 rgba(31, 38, 135, 0.5);
+        }
+
+        .hero-text {
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .text-justify {
+            text-align: justify;
+        }
+        
+        .elegant-title {
+            background: linear-gradient(180deg, #FFFFFF 0%, #BFE2FF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Keyframes for animations */
         @keyframes fadeUpZoom {
             0% { opacity: 0; transform: translateY(30px) scale(0.95); }
             100% { opacity: 1; transform: translateY(0) scale(1); }
         }
 
-        /* Contenedor principal */
-        .container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            padding: 50px 20px;
+        @keyframes borderGradient {
+            0% { border-image-source: linear-gradient(45deg, #00aaff, #0044cc); }
+            50% { border-image-source: linear-gradient(45deg, #66d9ff, #00aaff); }
+            100% { border-image-source: linear-gradient(45deg, #00aaff, #0044cc); }
         }
 
-        /* Tarjetas */
-        .card {
-            background: rgba(255,255,255,0.05);
-            border-radius: 15px;
-            padding: 20px;
-            margin: 15px;
-            backdrop-filter: blur(5px);
-            animation: fadeUpZoom 0.8s ease forwards;
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-            width: 300px;
-            max-width: 90%;
+        /* Applying new effects */
+        .animated-card {
+            animation: borderGradient 4s ease-in-out infinite;
+            border-image-slice: 1;
         }
 
-        /* Hover interactivo */
-        .card:hover {
-            transform: scale(1.05) rotate3d(1,1,0,4deg);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
-        }
-
-        /* Botones */
-        button, a.button {
-            background: #1e90ff;
-            color: white;
-            border: none;
-            padding: 12px 20px;
-            border-radius: 8px;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-            transition: all 0.3s ease;
-        }
-
-        button:hover, a.button:hover {
-            transform: scale(1.1);
-            filter: brightness(1.2);
-        }
-
-        /* Título animado */
-        .title {
-            text-align: center;
-            font-size: 2.5em;
-            margin-top: 20px;
-            animation: fadeUpZoom 1s ease forwards;
-        }
-
-        /* Responsivo */
-        @media (max-width: 768px) {
-            .container {
-                flex-direction: column;
-                align-items: center;
-            }
-            .card {
-                width: 90%;
-            }
+        /* AOS styles */
+        [data-aos] {
+            opacity: 0;
+            transform: translateY(30px);
+            transition-property: opacity, transform;
+            transition-duration: 0.8s;
+            transition-timing-function: ease;
+            transition-delay: var(--aos-delay, 0s);
         }
     </style>
+    <!-- AOS for animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Particles.js for background animation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
 </head>
 <body>
 
-    <!-- Título -->
-    <h1 class="title">🌊 Planilla Azul</h1>
+    <!-- Particles.js container -->
+    <div id="particles-js"></div>
 
-    <!-- Contenedor con tarjetas -->
-    <div class="container">
-        <div class="card">
-            <h2>Opción 1</h2>
-            <p>Descripción breve de esta opción.</p>
-            <button>Seleccionar</button>
+    <!-- Header and Main Section -->
+    <header class="min-h-screen flex flex-col items-center justify-center p-8 text-center relative z-10">
+        <div class="glassmorphism p-10 max-w-4xl hero-text" data-aos="fade-up" data-aos-duration="1200">
+            <h1 class="text-6xl font-black mb-4 elegant-title">PLANILLA AZUL</h1>
+            <h2 class="text-3xl font-bold mb-4">CERCANÍA, DIGNIFICACIÓN Y CRECIMIENTO</h2>
+            <p class="text-xl font-medium">
+                "¡ES NUESTRO TIEMPO, ES NUESTRO MOMENTO! TIEMPO DE UN SINDICATO CON CERCANÍA,
+                DIGNIFICACIÓN Y CRECIMIENTO. TIEMPO DE UNIDAD, TIEMPO DE AVANZAR."
+            </p>
+            <a href="#quienes-somos" class="mt-8 inline-block px-8 py-3 text-lg font-bold text-blue-900 bg-white rounded-full hover:bg-gray-200 transition-colors">Conoce nuestras propuestas</a>
         </div>
-        <div class="card">
-            <h2>Opción 2</h2>
-            <p>Descripción breve de esta opción.</p>
-            <button>Seleccionar</button>
-        </div>
-        <div class="card">
-            <h2>Opción 3</h2>
-            <p>Descripción breve de esta opción.</p>
-            <button>Seleccionar</button>
-        </div>
-    </div>
+    </header>
 
-    <!-- Aquí irían tus partículas originales -->
-    <script src="particulas.js"></script>
+    <!-- "Quiénes Somos" Section -->
+    <section id="quienes-somos" class="py-20 px-8 relative z-10">
+        <div class="container mx-auto">
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="lg:w-1/2" data-aos="fade-right" data-aos-duration="1000">
+                    <!-- Updated group photo -->
+                    <img src="img/Planilla%20Azul%202.png" alt="Foto Grupal de la Planilla Azul" class="w-full h-auto object-cover rounded-2xl border-4 border-white shadow-lg">
+                </div>
+                <div class="lg:w-1/2 glassmorphism p-8" data-aos="fade-left" data-aos-duration="1000">
+                    <h3 class="text-4xl font-extrabold mb-6">Mensaje</h3>
+                    <p class="text-lg mb-4 leading-relaxed text-justify">
+                        Desde hace más de cuatro décadas, el Sindicato Único de Trabajadores y Empleados al Servicio de la UAEMéx
+                        ha sido la voz colectiva que sostiene y fortalece el funcionamiento de nuestra Máxima Casa de Estudios.
+                        Hemos logrado conquistas laborales, prestaciones y una representación cercana que garantiza estabilidad y
+                        compromiso con la comunidad universitaria.
+                    </p>
+                    <p class="text-lg leading-relaxed text-justify">
+                        Hoy, frente a una universidad en transformación y retos cada vez más complejos, reafirmamos nuestra misión
+                        de defender los derechos de las y los trabajadores, impulsar una gestión sindical democrática, incluyente y
+                        transparente, y ser protagonistas en la construcción de un futuro más justo para todas y todos.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- "Propuestas" Section -->
+    <section id="propuestas" class="py-20 px-8 relative z-10">
+        <div class="container mx-auto">
+            <h3 class="text-5xl font-extrabold text-center mb-12 elegant-title" data-aos="fade-up" data-aos-duration="1000">Nuestras Propuestas</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Proposal cards, repeat this structure for each secretariat -->
+                <div class="glassmorphism glassmorphism-card animated-card p-6 flex flex-col items-center">
+                    <h4 class="text-2xl font-bold mb-4 text-center">Secretaría General</h4>
+                    <ul class="list-disc pl-5 text-lg space-y-2">
+                        <li>Gestionar espacios dignos para descanso y alimentación.</li>
+                        <li>Incrementar monto y distribuir equitativamente las promociones.</li>
+                        <li>Implementar el programa "Tu Sindicato Te Escucha".</li>
+                        <li>Mejorar condiciones de trabajos especiales y contratos individuales.</li>
+                        <li>Solicitar un terreno para actividades sindicales.</li>
+                    </ul>
+                </div>
+                <div class="glassmorphism glassmorphism-card animated-card p-6 flex flex-col items-center">
+                    <h4 class="text-2xl font-bold mb-4 text-center">Secretaría de Conflictos</h4>
+                    <ul class="list-disc pl-5 text-lg space-y-2">
+                        <li>Garantizar respeto a la pluralidad política e ideológica.</li>
+                        <li>Ofrecer asesoría legal gratuita ("Martes de asesoria para ti").</li>
+                        <li>Supervisar el cumplimiento del Contrato Colectivo de Trabajo.</li>
+                        <li>Vigilar la protección de derechos laborales con trato digno.</li>
+                    </ul>
+                </div>
+                <div class="glassmorphism glassmorphism-card animated-card p-6 flex flex-col items-center">
+                    <h4 class="text-2xl font-bold mb-4 text-center">Secretaría del Trabajo</h4>
+                    <ul class="list-disc pl-5 text-lg space-y-2">
+                        <li>Impulsar contrataciones desde nuestra bolsa de trabajo.</li>
+                        <li>Promover la conversión de plazas de confianza y CAF.</li>
+                        <li>Realizar pláticas de inducción para nuevos agremiados.</li>
+                        <li>Facilitar el acceso a certificaciones y programas institucionales.</li>
+                    </ul>
+                </div>
+                <div class="glassmorphism glassmorphism-card animated-card p-6 flex flex-col items-center">
+                    <h4 class="text-2xl font-bold mb-4 text-center">Secretaría de Previsión Social</h4>
+                    <ul class="list-disc pl-5 text-lg space-y-2">
+                        <li>Acercar servicios de salud preventiva y credencialización con unidades móviles.</li>
+                        <li>Acompañar en trámites de préstamos ISSEMYM.</li>
+                        <li>Fomentar la salud mental y nutrición (pláticas y talleres).</li>
+                        <li>Asesoría personalizada a trabajadores próximos a jubilarse.</li>
+                    </ul>
+                </div>
+                <div class="glassmorphism glassmorphism-card animated-card p-6 flex flex-col items-center">
+                    <h4 class="text-2xl font-bold mb-4 text-center">Secretaría de Tesorería</h4>
+                    <ul class="list-disc pl-5 text-lg space-y-2">
+                        <li>Garantizar transparencia en el uso de cuotas sindicales.</li>
+                        <li>Organizar actividades de recaudación con eventos y donaciones.</li>
+                        <li>Promover educación financiera para los agremiados.</li>
+                    </ul>
+                </div>
+                <div class="glassmorphism glassmorphism-card animated-card p-6 flex flex-col items-center">
+                    <h4 class="text-2xl font-bold mb-4 text-center">Secretaría del Exterior</h4>
+                    <ul class="list-disc pl-5 text-lg space-y-2">
+                        <li>Asegurar entrega oportuna y de calidad de implementos laborales.</li>
+                        <li>Negociar descuentos y promociones con comercios.</li>
+                        <li>Análisis de condiciones-necesidades para un equilibrio en la entrega.</li>
+                    </ul>
+                </div>
+                <div class="glassmorphism glassmorphism-card animated-card p-6 flex flex-col items-center">
+                    <h4 class="text-2xl font-bold mb-4 text-center">Secretaría de Organización</h4>
+                    <ul class="list-disc pl-5 text-lg space-y-2">
+                        <li>Ampliar la edad límite para participación infantil en eventos.</li>
+                        <li>Mejorar la calidad y organización de eventos sindicales.</li>
+                        <li>Crear un catálogo de productos y servicios de agremiados.</li>
+                    </ul>
+                </div>
+                <div class="glassmorphism glassmorphism-card animated-card p-6 flex flex-col items-center">
+                    <h4 class="text-2xl font-bold mb-4 text-center">Secretaría de Actas y Acuerdos</h4>
+                    <ul class="list-disc pl-5 text-lg space-y-2">
+                        <li>Enriquecer el portal web con acceso exclusiva para agremiados.</li>
+                        <li>Mantener archivo físico y digital actualizado y con acceso.</li>
+                        <li>Actualizar la base de datos sindical.</li>
+                    </ul>
+                </div>
+                <div class="glassmorphism glassmorphism-card animated-card p-6 flex flex-col items-center">
+                    <h4 class="text-2xl font-bold mb-4 text-center">Secretaría de Acción Deportiva</h4>
+                    <ul class="list-disc pl-5 text-lg space-y-2">
+                        <li>Organizar jornadas deportivas por zonas geográficas.</li>
+                        <li>Formar la Selección Deportiva SUTESUAEM.</li>
+                        <li>Implementar un certamen anual de baile sindical.</li>
+                    </ul>
+                </div>
+                <div class="glassmorphism glassmorphism-card animated-card p-6 flex flex-col items-center">
+                    <h4 class="text-2xl font-bold mb-4 text-center">Secretaría de Cultura y Acción Femenil</h4>
+                    <ul class="list-disc pl-5 text-lg space-y-2">
+                        <li>Mejorar el reconocimiento "Presea a la Mujer Administrativa".</li>
+                        <li>Acompañar trámites de becas, exenciones y reembolsos educativos.</li>
+                        <li>Organizar viajes sindicales accesibles y de calidad.</li>
+                    </ul>
+                </div>
+                <div class="glassmorphism glassmorphism-card animated-card p-6 flex flex-col items-center">
+                    <h4 class="text-2xl font-bold mb-4 text-center">Secretaría de Prensa y Propaganda</h4>
+                    <ul class="list-disc pl-5 text-lg space-y-2">
+                        <li>Fortalecer redes sociales como canales informativos confiables.</li>
+                        <li>Crear la figura del Cronista del Sindicato.</li>
+                        <li>Publicar un boletín sindical trimestral.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- "Integrantes" Section -->
+    <section id="integrantes" class="py-20 px-8 relative z-10">
+        <div class="container mx-auto">
+            <h3 class="text-5xl font-extrabold text-center mb-12" data-aos="fade-up">Conoce a nuestro equipo</h3>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+                <!-- Integrante 1: Saúl Trejo Rosales - Secretario General -->
+                <div class="text-center" data-aos="fade-up" data-aos-delay="50">
+                    <img src="img/Saul.png" alt="Saúl Trejo Rosales" class="w-full rounded-full border-4 border-blue-500 shadow-lg mb-2 mx-auto">
+                    <h5 class="font-bold">Saúl Trejo Rosales</h5>
+                    <p class="text-sm text-blue-300">Secretario General</p>
+                </div>
+                <!-- Integrante 2: Bethsabe Hernández Cruz - Secretaria de Conflictos -->
+                <div class="text-center" data-aos="fade-up" data-aos-delay="100">
+                    <img src="img/Bethsabe%20Hernandez.png" alt="Bethsabé Hernández Cruz" class="w-full rounded-full border-4 border-blue-500 shadow-lg mb-2 mx-auto">
+                    <h5 class="font-bold">Bethsabé Hernández Cruz</h5>
+                    <p class="text-sm text-blue-300">Secretaría de Conflictos</p>
+                </div>
+                <!-- Integrante 3: Jesus Alejandro Rueda Perez - Secretario del Trabajo -->
+                <div class="text-center" data-aos="fade-up" data-aos-delay="150">
+                    <img src="img/Jesus%20alejandro.png" alt="Jesús Alejandro Rueda Pérez" class="w-full rounded-full border-4 border-blue-500 shadow-lg mb-2 mx-auto">
+                    <h5 class="font-bold">Jesús Alejandro Rueda Pérez</h5>
+                    <p class="text-sm text-blue-300">Secretaría del Trabajo</p>
+                </div>
+                <!-- Integrante 4: Angelica Rocio Dìaz Armeaga- Secretaria de Previsión Social -->
+                <div class="text-center" data-aos="fade-up" data-aos-delay="200">
+                    <img src="img/Angelica%20Rocio.png" alt="Angélica Rocío" class="w-full rounded-full border-4 border-blue-500 shadow-lg mb-2 mx-auto">
+                    <h5 class="font-bold">Angélica Rocío Díaz Armeaga</h5>
+                    <p class="text-sm text-blue-300">Secretaría de Previsión Social</p>
+                </div>
+                <!-- Integrante 5: Antonio Lucas Delgado- Subsecretario de Acción Deportiva -->
+                <div class="text-center" data-aos="fade-up" data-aos-delay="250">
+                    <img src="img/Antonio%20Lucas.png" alt="Antonio Lucas" class="w-full rounded-full border-4 border-blue-500 shadow-lg mb-2 mx-auto">
+                    <h5 class="font-bold">Antonio Lucas Delgado</h5>
+                    <p class="text-sm text-blue-300">Subsecretario de Acción Deportiva</p>
+                </div>
+                <!-- Integrante 6: Luis Oscar Zepeda Ruiz- Secretario de Actas y Acuerdos -->
+                <div class="text-center" data-aos="fade-up" data-aos-delay="300">
+                    <img src="img/Luis%20Oscar%20Zepeda.png" alt="Luis Óscar Zepeda Ruiz" class="w-full rounded-full border-4 border-blue-500 shadow-lg mb-2 mx-auto">
+                    <h5 class="font-bold">Luis Óscar Zepeda Ruiz</h5>
+                    <p class="text-sm text-blue-300">Secretaría de Actas y Acuerdos</p>
+                </div>
+                <!-- Integrante 7: Magaly Miranda Rojas- Subsecretaria de Actas y Acuerdos -->
+                <div class="text-center" data-aos="fade-up" data-aos-delay="350">
+                    <img src="img/MagalyMiranda.png" alt="Magaly Miranda Rojas" class="w-full rounded-full border-4 border-blue-500 shadow-lg mb-2 mx-auto">
+                    <h5 class="font-bold">Magaly Miranda Rojas</h5>
+                    <p class="text-sm text-blue-300">Subsecretaría de Actas y Acuerdos</p>
+                </div>
+                <!-- Integrante 8: Marco Antonio Gomez Mondragon - Subsecretario de Tesorería -->
+                <div class="text-center" data-aos="fade-up" data-aos-delay="400">
+                    <img src="img/Marco%20Antonio.png" alt="Marco Antonio Gómez Mondragón" class="w-full rounded-full border-4 border-blue-500 shadow-lg mb-2 mx-auto">
+                    <h5 class="font-bold">Marco Antonio Gómez Mondragón</h5>
+                    <p class="text-sm text-blue-300">Subsecretaría de Tesorería</p>
+                </div>
+                <!-- Integrante 9: Ana Laura Nava Peña- Secretaria del Exterior -->
+                <div class="text-center" data-aos="fade-up" data-aos-delay="450">
+                    <img src="img/Ana%20Laura%20Nava.png" alt="Ana Laura Nava Peña" class="w-full rounded-full border-4 border-blue-500 shadow-lg mb-2 mx-auto">
+                    <h5 class="font-bold">Ana Laura Nava Peña</h5>
+                    <p class="text-sm text-blue-300">Secretaría del Exterior</p>
+                </div>
+                <!-- Integrante 10: Anabel Torres Segura- Secretaria de Tesorería -->
+                <div class="text-center" data-aos="fade-up" data-aos-delay="500">
+                    <img src="img/Anabel.png" alt="Anabel Torres Segura" class="w-full rounded-full border-4 border-blue-500 shadow-lg mb-2 mx-auto">
+                    <h5 class="font-bold">Anabel Torres Segura</h5>
+                    <p class="text-sm text-blue-300">Secretaría de Tesorería</p>
+                </div>
+                <!-- Integrante 11: Isaí Soriano Garcia- Subsecretario de Prensa y Propaganda -->
+                <div class="text-center" data-aos="fade-up" data-aos-delay="550">
+                    <img src="img/Isai%20.png" alt="Isaí Soriano García" class="w-full rounded-full border-4 border-blue-500 shadow-lg mb-2 mx-auto">
+                    <h5 class="font-bold">Isaí Soriano García</h5>
+                    <p class="text-sm text-blue-300">Subsecretario de Prensa y Propaganda</p>
+                </div>
+                <!-- Integrante 12: Sonia Colin Jimenez- Secretaria de Cultura y Acción Femenil -->
+                <div class="text-center" data-aos="fade-up" data-aos-delay="600">
+                    <img src="img/Sonia%20Colin.png" alt="Sonia Colin Jiménez" class="w-full rounded-full border-4 border-blue-500 shadow-lg mb-2 mx-auto">
+                    <h5 class="font-bold">Sonia Colín Jiménez</h5>
+                    <p class="text-sm text-blue-300">Secretaría de Cultura y Acción Femenil</p>
+                </div>
+                <!-- Integrante 13: María Concepción Rivera López- Secretaria de Organización -->
+                <div class="text-center" data-aos="fade-up" data-aos-delay="650">
+                    <img src="img/Maria%20Concepcion.png" alt="María Concepción Rivera López" class="w-full rounded-full border-4 border-blue-500 shadow-lg mb-2 mx-auto">
+                    <h5 class="font-bold">María Concepción Rivera López</h5>
+                    <p class="text-sm text-blue-300">Secretaría de Organización</p>
+                </div>
+                <!-- Integrante 14: María Ignacia Sánchez Jiménez- Subsecretaria de Cultura y Acción Femenil -->
+                <div class="text-center" data-aos="fade-up" data-aos-delay="700">
+                    <img src="img/Maria%20Ignacia.png" alt="María Ignacia Sánchez Jiménez" class="w-full rounded-full border-4 border-blue-500 shadow-lg mb-2 mx-auto">
+                    <h5 class="font-bold">María Ignacia Sánchez Jiménez</h5>
+                    <p class="text-sm text-blue-300">Subsecretaría de Cultura y Acción Femenil</p>
+                </div>
+                <!-- Integrante 15: Christian Everardo Flores Plata - Secretario de Prensa y Propaganda -->
+                <div class="text-center" data-aos="fade-up" data-aos-delay="750">
+                    <img src="img/Christian%20Everardo.png" alt="Christian Everardo Flores Plata" class="w-full rounded-full border-4 border-blue-500 shadow-lg mb-2 mx-auto">
+                    <h5 class="font-bold">Christian Everardo Flores Plata</h5>
+                    <p class="text-sm text-blue-300">Secretaría de Prensa y Propaganda</p>
+                </div>
+                <!-- Integrante 16: Hector Hugo Zamora Enriquez - Subsecretario del Exterior -->
+                <div class="text-center" data-aos="fade-up" data-aos-delay="800">
+                    <img src="img/Hector%20HUgo%20Gomora.png" alt="Hector Hugo Zamora Enriquez" class="w-full rounded-full border-4 border-blue-500 shadow-lg mb-2 mx-auto">
+                    <h5 class="font-bold">Héctor Hugo Zamora Enriquez</h5>
+                    <p class="text-sm text-blue-300">Subsecretario del Exterior</p>
+                </div>
+                <!-- Integrante 17: Nancy Herrera Landeros - Subsecretaria de Organización -->
+                <div class="text-center" data-aos="fade-up" data-aos-delay="850">
+                    <img src="img/Nancy%20Herrera.png" alt="Nancy Herrera Landeros" class="w-full rounded-full border-4 border-blue-500 shadow-lg mb-2 mx-auto">
+                    <h5 class="font-bold">Nancy Herrera Landeros</h5>
+                    <p class="text-sm text-blue-300">Subsecretaría de Organización</p>
+                </div>
+                <!-- Integrante 18: Cesar E. Machuca Morales - Secretario de Acción Deportiva -->
+                <div class="text-center" data-aos="fade-up" data-aos-delay="900">
+                    <img src="img/Cesar%20Ebodio%20Machuca.png" alt="César E. Machuca Morales" class="w-full rounded-full border-4 border-blue-500 shadow-lg mb-2 mx-auto">
+                    <h5 class="font-bold">César E. Machuca Morales</h5>
+                    <p class="text-sm text-blue-300">Secretaría de Acción Deportiva</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="glassmorphism py-8 mt-12 px-8 text-center relative z-10" data-aos="fade-up">
+        <div class="container mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-4">
+                <!-- Placeholder for logo -->
+                <img src="img/Logo%20PLantilla%20Azul%20.png" alt="Logo de la Planilla Azul" class="mb-4 md:mb-0 w-24">
+                <p class="text-xl font-bold">"TIEMPO DE UNIDAD, TIEMPO DE AVANZAR."</p>
+                <div class="flex justify-center items-center gap-6 mt-4 md:mt-0">
+                    <a href="https://www.facebook.com/planillaazulsutes" target="_blank" class="text-4xl text-white hover:text-gray-300 transition-colors">
+                        <!-- Facebook Icon -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M14 13.5h2.5l1-4H14v-2c0-1.03 0-2 2-2h3V2h-3c-3.15 0-4 2.15-4 4v2.5H6v4h4V22h4v-8.5Z"/></svg>
+                    </a>
+                    <a href="https://www.instagram.com/planillaazulsutes" target="_blank" class="text-4xl text-white hover:text-gray-300 transition-colors">
+                        <!-- Instagram Icon -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4zm9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8a1.25 1.25 0 0 1-1.25-1.25a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5a5 5 0 0 1-5 5a5 5 0 0 1-5-5a5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3a3 3 0 0 0 3 3a3 3 0 0 0 3-3a3 3 0 0 0-3-3Z"/></svg>
+                    </a>
+                </div>
+            </div>
+            <p class="text-sm mt-4">Teléfono: 722-243-4141</p>
+            <p class="text-sm">#AzulPlanilla</p>
+        </div>
+    </footer>
+
+    <!-- Particles.js initialization script -->
+    <script>
+        particlesJS('particles-js', {
+            "particles": {
+                "number": {
+                    "value": 80,
+                    "density": { "enable": true, "value_area": 800 }
+                },
+                "color": { "value": "#ffffff" },
+                "shape": { "type": "circle" },
+                "opacity": {
+                    "value": 0.5,
+                    "random": false,
+                    "anim": { "enable": false }
+                },
+                "size": {
+                    "value": 3,
+                    "random": true,
+                    "anim": { "enable": false }
+                },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#ffffff",
+                    "opacity": 0.4,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 6,
+                    "direction": "none",
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false,
+                    "attract": { "enable": false }
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": { "enable": true, "mode": "repulse" },
+                    "onclick": { "enable": true, "mode": "push" },
+                    "resize": true
+                },
+                "modes": {
+                    "repulse": { "distance": 200, "duration": 0.4 },
+                    "push": { "particles_nb": 4 }
+                }
+            },
+            "retina_detect": true
+        });
+    </script>
+    <!-- AOS initialization script -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        duration: 1000,
+        once: true,
+      });
+    </script>
 </body>
 </html>
