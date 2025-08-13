@@ -5,13 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Planilla Azul - SUTESUAEM</title>
     <!-- Tailwind CSS for styling -->
+    <!--
+      NOTA: La CDN de Tailwind se usa aquí para una demostración rápida.
+      Para producción, se recomienda instalar Tailwind como un plugin de PostCSS
+      o usar el CLI de Tailwind para una mejor optimización.
+      Más info: https://tailwindcss.com/docs/installation
+    -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
         body {
             font-family: 'Inter', sans-serif;
             color: #fff;
-            background-color: #0044BB; /* Changed to a brighter royal blue */
+            background-color: #0044BB;
             min-height: 100vh;
         }
 
@@ -34,7 +40,7 @@
         }
 
         .glassmorphism-card:hover {
-            transform: scale(1.05) rotate3d(1,1,0,4deg); /* New 3D hover effect */
+            transform: scale(1.05) rotate3d(1,1,0,4deg);
             box-shadow: 0 16px 64px 0 rgba(31, 38, 135, 0.5);
         }
 
@@ -358,7 +364,7 @@
                 <!-- Placeholder for logo -->
                 <img src="img/Logo%20PLantilla%20Azul%20.png" alt="Logo de la Planilla Azul" class="mb-4 md:mb-0 w-24">
                 <p class="text-xl font-bold">"TIEMPO DE UNIDAD, TIEMPO DE AVANZAR."</p>
-                <!-- FIX: Se agregaron los iconos de redes sociales de Facebook, Instagram y TikTok con sus respectivos enlaces. -->
+                <!-- FIX: Se ha corregido el enlace de Facebook y se han añadido los de Instagram y TikTok. -->
                 <div class="flex justify-center items-center gap-6 mt-4 md:mt-0">
                     <a href="https://www.facebook.com/share/1AdUkKi28H/" target="_blank" class="text-4xl text-white hover:text-gray-300 transition-colors">
                         <!-- Facebook Icon -->
