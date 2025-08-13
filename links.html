@@ -10,43 +10,74 @@
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
         body {
             font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #0044BB 0%, #002288 100%);
             color: #fff;
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 1rem;
+            /* FIX: Se añade un fondo con animación de gradiente */
+            background: linear-gradient(135deg, #0044BB 0%, #002288 100%);
+            background-size: 400% 400%;
+            /* FIX: Se reduce la velocidad de la animación para que sea más notable */
+            animation: gradient-animation 10s ease infinite;
         }
+
+        /* FIX: Keyframes para animar el fondo de gradiente */
+        @keyframes gradient-animation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
         .link-container {
             backdrop-filter: blur(10px);
             background-color: rgba(255, 255, 255, 0.1);
             border-radius: 20px;
             border: 1px solid rgba(255, 255, 255, 0.3);
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            /* FIX: Animación de entrada para el contenedor principal */
+            animation: fadeInUp 1s ease-in-out;
         }
+
+        /* FIX: Keyframes para el efecto de entrada */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         .link-btn {
             background-color: #fff;
             color: #0044BB;
             font-weight: bold;
-            transition: transform 0.2s ease, background-color 0.2s ease;
+            transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
         }
+
+        /* FIX: Efecto hover mejorado para los botones */
         .link-btn:hover {
-            transform: translateY(-2px);
+            transform: translateY(-5px);
             background-color: #e5e7eb;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
+
         .logo-image {
             max-width: 150px;
             border-radius: 9999px; /* Tailwind's rounded-full */
         }
         .shadow-blue-glow {
-            box-shadow: 0 0 15px rgba(0, 68, 187, 0.7), 0 0 25px rgba(0, 68, 187, 0.5);
+            /* FIX: Se aumenta la intensidad del brillo de la sombra */
+            box-shadow: 0 0 20px rgba(0, 68, 187, 0.8), 0 0 40px rgba(0, 68, 187, 0.6);
         }
     </style>
 </head>
 <body>
     <div class="link-container w-full max-w-sm p-8 text-center">
-        <!-- FIX: Se ha actualizado el logo principal con la URL proporcionada -->
         <img src="https://raw.githubusercontent.com/EdddGaar/Pazul/main/img/LogoAzzul.png" alt="Logo de la Planilla Azul" class="logo-image mx-auto mb-4 border-4 border-white shadow-blue-glow">
         
         <h1 class="text-3xl font-black mb-2 elegant-title">Planilla Azul</h1>
@@ -54,7 +85,6 @@
 
         <!-- Botones de Enlace -->
         <div class="space-y-4">
-            <!-- FIX: Se ha actualizado el botón de Facebook con la imagen del logo -->
             <a href="https://www.facebook.com/share/1AdUkKi28H/" target="_blank" class="link-btn block py-4 rounded-full">
                 <div class="flex items-center justify-center">
                     <img src="https://raw.githubusercontent.com/EdddGaar/Pazul/main/img/Fcbklogo.webp" alt="Facebook Logo" class="h-6 w-6 mr-2">
@@ -62,7 +92,6 @@
                 </div>
             </a>
             
-            <!-- FIX: Se ha actualizado el botón de Instagram con la imagen del logo -->
             <a href="https://www.instagram.com/planillaazulsutes?igsh=NnhmZGZxd292ZGhl" target="_blank" class="link-btn block py-4 rounded-full">
                 <div class="flex items-center justify-center">
                     <img src="https://raw.githubusercontent.com/EdddGaar/Pazul/main/img/instagram-logo-png_seeklogo-377525.webp" alt="Instagram Logo" class="h-6 w-6 mr-2">
@@ -70,7 +99,6 @@
                 </div>
             </a>
 
-            <!-- FIX: Se ha actualizado el botón de TikTok con la imagen del logo -->
             <a href="https://www.tiktok.com/@planillaazulsutes?_t=ZS-8ypH3YzemNm&_r=1" target="_blank" class="link-btn block py-4 rounded-full">
                 <div class="flex items-center justify-center">
                     <img src="https://raw.githubusercontent.com/EdddGaar/Pazul/main/img/tik-tok-logo-circle-social-butterfly-magazine-fresh-approach-lifestyle-15.webp" alt="TikTok Logo" class="h-6 w-6 mr-2">
@@ -78,7 +106,6 @@
                 </div>
             </a>
 
-            <!-- Se mantiene el enlace a la página principal -->
             <a href="https://edddgaar.github.io/Pazul/" target="_blank" class="link-btn block py-4 rounded-full">
                 <div class="flex items-center justify-center">
                     <!-- Icono de Propuestas -->
@@ -88,7 +115,7 @@
             </a>
         </div>
         <p class="text-xs text-center mt-8 text-white text-opacity-70">
-            © 2025 Planilla Azul. Todos los derechos reservados.
+            © 2024 Planilla Azul. Todos los derechos reservados.
         </p>
     </div>
 </body>
