@@ -41,9 +41,16 @@
         .hero-text {
             text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
         }
-        
+
         .text-justify {
             text-align: justify;
+        }
+        
+        .elegant-title {
+            background: linear-gradient(180deg, #FFFFFF 0%, #BFE2FF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
         }
     </style>
     <!-- AOS for animations -->
@@ -59,7 +66,7 @@
     <!-- Header and Main Section -->
     <header class="min-h-screen flex flex-col items-center justify-center p-8 text-center relative z-10">
         <div class="glassmorphism p-10 max-w-4xl hero-text" data-aos="fade-up" data-aos-duration="1200">
-            <h1 class="text-6xl font-black mb-4">PLANILLA AZUL</h1>
+            <h1 class="text-6xl font-black mb-4 elegant-title">PLANILLA AZUL</h1>
             <h2 class="text-3xl font-bold mb-4">CERCANÍA, DIGNIFICACIÓN Y CRECIMIENTO</h2>
             <p class="text-xl font-medium">
                 "¡ES NUESTRO TIEMPO, ES NUESTRO MOMENTO! TIEMPO DE UN SINDICATO CON CERCANÍA,
@@ -98,7 +105,7 @@
     <!-- "Propuestas" Section -->
     <section id="propuestas" class="py-20 px-8 relative z-10">
         <div class="container mx-auto">
-            <h3 class="text-5xl font-extrabold text-center mb-12" data-aos="fade-up" data-aos-duration="1000">Nuestras Propuestas</h3>
+            <h3 class="text-5xl font-extrabold text-center mb-12 elegant-title" data-aos="fade-up" data-aos-duration="1000">Nuestras Propuestas</h3>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Proposal cards, repeat this structure for each secretariat -->
                 <div class="glassmorphism glassmorphism-card p-6 flex flex-col items-center" data-aos="fade-up" data-aos-delay="100">
